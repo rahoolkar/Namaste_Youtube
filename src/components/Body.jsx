@@ -1,11 +1,18 @@
 import Sidebar from "./Sidebar";
-import MainContainer from "./MainContainer"
+import MainContainer from "./MainContainer";
+import { useSelector } from "react-redux";
+import SidebarShort from "./SidebarShort";
 
 function Body() {
-  return <div className="flex">
-    <Sidebar></Sidebar>
-    <MainContainer></MainContainer>
-  </div>;
+  let isExpand = useSelector((store) => {
+    return store.bar.expand;
+  });
+  return (
+    <div className="flex">
+      {isExpand ? <Sidebar></Sidebar> : <SidebarShort></SidebarShort>}
+      <MainContainer></MainContainer>
+    </div>
+  );
 }
 
 export default Body;

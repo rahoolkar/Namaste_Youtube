@@ -1,5 +1,11 @@
+import MeSection from "./MeSection";
+
 function Sidebar() {
-  return <div>Sidebar</div>;
+  return (
+    <div className="">
+      <MeSection></MeSection>
+    </div>
+  );
 }
 
 export default Sidebar;

@@ -1,12 +1,21 @@
+import { useDispatch } from "react-redux";
+import { toggleExpand } from "../utils/barSlice";
+
 export default function Header() {
+  let dispatch = useDispatch();
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between sticky top-0 bg-white">
       <div className="left-section flex items-center w-1/12">
-        <div className="h-10 w-10 p-2">
+        <div
+          className="h-10 w-10 p-2 mx-2 hover: cursor-pointer"
+          onClick={() => {
+            dispatch(toggleExpand());
+          }}
+        >
           <i className="fa-solid fa-bars text-2xl"></i>
         </div>
         <img
-          className="h-14 w-24 mx-4"
+          className="h-16 w-28 mx-4"
           src="https://1000logos.net/wp-content/uploads/2017/05/Youtube-Logo.png"
           alt="youtube-logo"
         />
@@ -23,7 +32,7 @@ export default function Header() {
       </div>
       <div className="right-section flex justify-center items-center w-1/12">
         <img
-        className="m-2 p-2 h-10"
+          className="m-2 p-2 h-10"
           src="https://cdn-icons-png.flaticon.com/512/3119/3119338.png"
           alt=""
         />
