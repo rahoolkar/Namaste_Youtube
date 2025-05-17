@@ -1,17 +1,21 @@
+import { Link } from "react-router-dom";
+
 function MeSection() {
   return (
     <div className="w-48 p-2 sticky right-0 top-16">
       <div className="upper-section border-b-2 border-b-gray-300">
-        <div className="flex rounded-2xl hover:bg-gray-100">
-          <img
-            className="h-8 m-2"
-            src="https://image.similarpng.com/file/similarpng/original-picture/2021/08/Instagram-home-icon-on-transparent-background-PNG.png"
-            alt=""
-          />
-          <div className="flex items-center mx-2">
-            <p className="font-bold text-sm">Home</p>
+        <Link to="/">
+          <div className="flex rounded-2xl hover:bg-gray-100">
+            <img
+              className="h-8 m-2"
+              src="https://image.similarpng.com/file/similarpng/original-picture/2021/08/Instagram-home-icon-on-transparent-background-PNG.png"
+              alt=""
+            />
+            <div className="flex items-center mx-2">
+              <p className="font-bold text-sm">Home</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
         <div className="flex rounded-2xl hover:bg-gray-100">
           <img

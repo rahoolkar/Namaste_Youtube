@@ -10,11 +10,11 @@ function VideoCard({ info }) {
         alt="thumbnail-image"
         className="rounded-2xl h-7/12"
       />
-      <div className="p-2"> 
+      <div className="p-2">
         <h1 className="font-bold text-md my-2">{title}</h1>
         <h3 className="text-gray-600 text-sm">{channelTitle}</h3>
         <h3 className="text-sm text-gray-600">
-          {Math.round(viewCount / 10000)}B • Duration
+          {Math.round(viewCount / 10000)}B • {"23 mins ago"}
         </h3>
       </div>
     </div>

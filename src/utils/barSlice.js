@@ -9,9 +9,12 @@ const barSlice = createSlice({
     toggleExpand: (state) => {
       state.expand = !state.expand;
     },
+    closeBar: (state) => {
+      state.expand = false;
+    },
   },
 });
 
-export let { toggleExpand } = barSlice.actions;
+export let { toggleExpand, closeBar } = barSlice.actions;
 
 export default barSlice.reducer;
