@@ -1,5 +1,4 @@
 function VideoCard({ info }) {
-  console.log(info);
   let { snippet, statistics } = info;
   let { channelTitle, thumbnails, title } = snippet;
   let { viewCount } = statistics;
@@ -20,5 +19,16 @@ function VideoCard({ info }) {
     </div>
   );
 }
+
+export const adVideoCard = (VideoCard) => {
+  return ({ info }) => {
+    return (
+      <div className="border border-black"> 
+        <VideoCard info={info}></VideoCard>
+        <h3 className="text-sm font-bold">Ad · Sponsored</h3>
+      </div>
+    );
+  };
+};
 
 export default VideoCard;
