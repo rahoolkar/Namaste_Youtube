@@ -1,13 +1,21 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleExpand } from "../utils/barSlice";
 import { useEffect, useState } from "react";
 import { API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
 import SearchSuggestion from "./SearchSuggestion";
+import { addToCache } from "../utils/cacheSlice";
 
 export default function Header() {
   let [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestion, setSearchSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
   let dispatch = useDispatch();
+  const cache = useSelector((store) => {
+    return store.cache.cache;
+  });
+
+  console.log("cache", cache);
 
   function handleSearchBar(event) {
     setSearchQuery(event.target.value);
@@ -15,7 +23,12 @@ export default function Header() {
 
   useEffect(() => {
     let timer = setTimeout(() => {
-      fetchSearchData();
+      if (cache[searchQuery]) {
+        console.log(cache[searchQuery]);
+        setSearchSuggestions(cache[searchQuery]);
+      } else {
+        fetchSearchData();
+      }
     }, 200);
 
     return () => {
@@ -24,9 +37,14 @@ export default function Header() {
   }, [searchQuery]);
 
   async function fetchSearchData() {
-    let response = await fetch(YOUTUBE_SEARCH_API + API_KEY);
+    let newYoutubeSearchApi = YOUTUBE_SEARCH_API.replace(
+      "q=",
+      `q=${searchQuery}`
+    );
+    let response = await fetch(newYoutubeSearchApi + API_KEY);
     let data = await response.json();
-    // setSearchSuggestions(data.items);
+    setSearchSuggestions(data.items);
+    dispatch(addToCache({ [searchQuery]: data.items }));
   }
 
   return (
@@ -53,6 +71,12 @@ export default function Header() {
             type="text"
             value={searchQuery}
             onChange={handleSearchBar}
+            onFocus={() => {
+              setShowSuggestions(true);
+            }}
+            onBlur={() => {
+              setShowSuggestions(false);
+            }}
             className="w-6/12 border border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-400"
           ></input>
           <button className="border  border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
@@ -60,36 +84,16 @@ export default function Header() {
           </button>
         </div>
 
-        {searchSuggestion.length === 0 && searchQuery !== "" ? (
-          <div className="bg-white absolute top-14 z-[9999] border border-gray-300 rounded-lg shadow shadow-gray-400 shadow-md w-5/12 mb-2 py-3">
-            <SearchSuggestion
-              info={{
-                snippet: {
-                  title: "Namaste Javascript",
-                },
-              }}
-            ></SearchSuggestion>
-            <SearchSuggestion
-              info={{
-                snippet: {
-                  title: "Namaste React",
-                },
-              }}
-            ></SearchSuggestion>
-            <SearchSuggestion
-              info={{
-                snippet: {
-                  title: "Namaste London",
-                },
-              }}
-            ></SearchSuggestion>
-            <SearchSuggestion
-              info={{
-                snippet: {
-                  title: "Namaste America",
-                },
-              }}
-            ></SearchSuggestion>
+        {showSuggestions && searchQuery !== "" ? (
+          <div className="bg-white absolute top-14 z-[9999] border border-gray-300 rounded-lg shadow-gray-400 shadow-md w-5/12 mb-2 py-3">
+            {searchSuggestion.map((item) => {
+              return (
+                <SearchSuggestion
+                  info={item}
+                  key={item.id.videoId}
+                ></SearchSuggestion>
+              );
+            })}
           </div>
         ) : null}
       </div>

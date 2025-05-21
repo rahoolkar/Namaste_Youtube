@@ -14,8 +14,7 @@ function VideoContainer() {
   async function fetchData() {
     const response = await fetch(YOUTUBE_API);
     const data = await response.json();
-
-    // console.log("data", data);
+    setData(data.items);
   }
   if (data.length === 0) {
     return <Shimmer></Shimmer>;
@@ -24,7 +23,7 @@ function VideoContainer() {
   const AdVideoComponent = adVideoCard(VideoCard);
 
   return (
-    <div className="flex flex-wrap p-2">
+    <div className="flex flex-wrap p-2 relative z-[-29]">
       <AdVideoComponent info={data[0]}></AdVideoComponent>
       {data.map((item) => {
         return (

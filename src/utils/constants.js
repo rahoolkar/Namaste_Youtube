@@ -5,6 +5,4 @@ export const YOUTUBE_API =
   API_KEY;
 
 export const YOUTUBE_SEARCH_API =
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=namaste&key=";
-
-  // "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=""
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=&key=";
