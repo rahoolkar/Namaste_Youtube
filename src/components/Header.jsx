@@ -1,8 +1,33 @@
 import { useDispatch } from "react-redux";
 import { toggleExpand } from "../utils/barSlice";
+import { useEffect, useState } from "react";
+import { API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
 
 export default function Header() {
+  let [searchQuery, setSearchQuery] = useState("");
+
   let dispatch = useDispatch();
+
+  function handleSearchBar(event) {
+    setSearchQuery(event.target.value);
+  }
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      fetchSearchData();
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
+  async function fetchSearchData() {
+    let response = await fetch(YOUTUBE_SEARCH_API + API_KEY);
+    let data = await response.json();
+    console.log(data);
+  }
+
   return (
     <div className="flex justify-between sticky top-0 bg-white">
       <div className="left-section flex items-center w-1/12">
@@ -24,6 +49,8 @@ export default function Header() {
         <input
           placeholder="Search"
           type="text"
+          value={searchQuery}
+          onChange={handleSearchBar}
           className="w-6/12 border border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-400"
         ></input>
         <button className="border border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
