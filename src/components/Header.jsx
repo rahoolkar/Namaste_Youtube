@@ -2,10 +2,11 @@ import { useDispatch } from "react-redux";
 import { toggleExpand } from "../utils/barSlice";
 import { useEffect, useState } from "react";
 import { API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
+import SearchSuggestion from "./SearchSuggestion";
 
 export default function Header() {
   let [searchQuery, setSearchQuery] = useState("");
-
+  const [searchSuggestion, setSearchSuggestions] = useState([]);
   let dispatch = useDispatch();
 
   function handleSearchBar(event) {
@@ -25,12 +26,12 @@ export default function Header() {
   async function fetchSearchData() {
     let response = await fetch(YOUTUBE_SEARCH_API + API_KEY);
     let data = await response.json();
-    console.log(data);
+    // setSearchSuggestions(data.items);
   }
 
   return (
     <div className="flex justify-between sticky top-0 bg-white">
-      <div className="left-section flex items-center w-1/12">
+      <div className="left-section flex items-center w-2/12">
         <div
           className="h-10 w-10 p-2 mx-2 hover: cursor-pointer"
           onClick={() => {
@@ -45,21 +46,56 @@ export default function Header() {
           alt="youtube-logo"
         />
       </div>
-      <div className="middle-section w-10/12 flex justify-center items-center">
-        <input
-          placeholder="Search"
-          type="text"
-          value={searchQuery}
-          onChange={handleSearchBar}
-          className="w-6/12 border border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-400"
-        ></input>
-        <button className="border border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </button>
+      <div className="middle-section w-10/12 flex flex-col justify-center items-center">
+        <div className="my-2 search-box flex w-12/12 justify-center items-center">
+          <input
+            placeholder="Search"
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchBar}
+            className="w-6/12 border border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-400"
+          ></input>
+          <button className="border  border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        {searchSuggestion.length === 0 && searchQuery !== "" ? (
+          <div className="bg-white absolute top-14 z-[9999] border border-gray-300 rounded-lg shadow shadow-gray-400 shadow-md w-5/12 mb-2 py-3">
+            <SearchSuggestion
+              info={{
+                snippet: {
+                  title: "Namaste Javascript",
+                },
+              }}
+            ></SearchSuggestion>
+            <SearchSuggestion
+              info={{
+                snippet: {
+                  title: "Namaste React",
+                },
+              }}
+            ></SearchSuggestion>
+            <SearchSuggestion
+              info={{
+                snippet: {
+                  title: "Namaste London",
+                },
+              }}
+            ></SearchSuggestion>
+            <SearchSuggestion
+              info={{
+                snippet: {
+                  title: "Namaste America",
+                },
+              }}
+            ></SearchSuggestion>
+          </div>
+        ) : null}
       </div>
       <div className="right-section flex justify-center items-center w-1/12">
         <img
-          className="m-2 p-2 h-10"
+          className="my-2 mx-auto p-2 h-10"
           src="https://cdn-icons-png.flaticon.com/512/3119/3119338.png"
           alt=""
         />

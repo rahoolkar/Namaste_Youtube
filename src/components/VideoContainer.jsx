@@ -14,7 +14,8 @@ function VideoContainer() {
   async function fetchData() {
     const response = await fetch(YOUTUBE_API);
     const data = await response.json();
-    setData(data.items);
+
+    // console.log("data", data);
   }
   if (data.length === 0) {
     return <Shimmer></Shimmer>;
