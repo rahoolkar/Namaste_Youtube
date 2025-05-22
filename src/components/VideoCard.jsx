@@ -4,11 +4,11 @@ function VideoCard({ info }) {
   let { viewCount } = statistics;
   return (
     // <div className="flex flex-col m-2 w-[32%] h-fit">
-    <div className="hover:cursor-pointer">
+    <div>
       <img
         src={thumbnails.high.url}
         alt="thumbnail-image"
-        className="rounded-2xl h-7/12"
+        className="rounded-2xl"
       />
       <div className="p-2">
         <h1 className="font-bold text-md my-2">{title}</h1>
