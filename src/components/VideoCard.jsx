@@ -3,7 +3,8 @@ function VideoCard({ info }) {
   let { channelTitle, thumbnails, title } = snippet;
   let { viewCount } = statistics;
   return (
-    <div className="flex flex-col m-2 w-[32%] h-fit">
+    // <div className="flex flex-col m-2 w-[32%] h-fit">
+    <div className="hover:cursor-pointer">
       <img
         src={thumbnails.high.url}
         alt="thumbnail-image"
@@ -23,9 +24,9 @@ function VideoCard({ info }) {
 export const adVideoCard = (VideoCard) => {
   return ({ info }) => {
     return (
-      <div className="border border-black"> 
+      <div> 
         <VideoCard info={info}></VideoCard>
-        <h3 className="text-sm font-bold">Ad · Sponsored</h3>
+        <h3 className="text-sm font-bold mx-2">Ad · Sponsored</h3>
       </div>
     );
   };

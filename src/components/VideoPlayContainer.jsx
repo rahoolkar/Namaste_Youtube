@@ -1,12 +1,6 @@
-import Shimmer from "./Shimmer";
-
 function VideoPlayContainer({ data }) {
-  console.log(data);
-  if (Object.keys(data) === 0) {
-    return <Shimmer></Shimmer>;
-  }
+  let { id } = data[0];
 
-  let { id } = data.items[0];
   return (
     <div>
       <iframe

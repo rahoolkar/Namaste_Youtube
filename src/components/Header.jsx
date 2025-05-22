@@ -15,8 +15,6 @@ export default function Header() {
     return store.cache.cache;
   });
 
-  console.log("cache", cache);
-
   function handleSearchBar(event) {
     setSearchQuery(event.target.value);
   }

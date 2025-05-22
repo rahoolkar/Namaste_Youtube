@@ -24,13 +24,19 @@ function VideoContainer() {
 
   return (
     <div className="flex flex-wrap p-2 relative z-[-29]">
-      <AdVideoComponent info={data[0]}></AdVideoComponent>
+      <Link
+        className="flex flex-col m-2 w-[32%] h-fit hover:cursor-pointer"
+        key={data[0].id}
+        to={"/watch?v=" + data[0].id}
+      >
+        <AdVideoComponent info={data[0]}></AdVideoComponent>
+      </Link>
       {data.map((item) => {
         return (
           <Link
-            to={"/watch?v=" + item.id}
+            to="/watch"
             key={item.id}
-            className="cursor-pointer"
+            className="flex flex-col m-2 w-[32%] h-fit"
           >
             <VideoCard info={item} />
           </Link>

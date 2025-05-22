@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeBar } from "../utils/barSlice";
 import { useSearchParams } from "react-router-dom";
 import { API_KEY } from "../utils/constants";
+import Shimmer from "./Shimmer";
 
 function WatchPage() {
   let [searchParams] = useSearchParams();
@@ -16,7 +17,7 @@ function WatchPage() {
 
   const dispatch = useDispatch();
 
-  const [videoData, setVideoData] = useState({});
+  const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
     dispatch(closeBar());
@@ -31,7 +32,11 @@ function WatchPage() {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vid}&key=${API_KEY}`
     );
     let data = await response.json();
-    setVideoData(data);
+    setVideoData(data.items);
+  }
+
+  if(videoData.length===0){
+    return <Shimmer></Shimmer>
   }
 
   return (
