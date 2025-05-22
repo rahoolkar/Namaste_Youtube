@@ -1,3 +1,5 @@
+import CommentBox from "./CommentBox";
+
 function VideoPlayContainer({ data }) {
   let { id } = data[0];
 
@@ -13,6 +15,7 @@ function VideoPlayContainer({ data }) {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
+      <CommentBox></CommentBox>
     </div>
   );
 }
