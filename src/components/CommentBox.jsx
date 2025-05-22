@@ -2,21 +2,21 @@ import CommentList from "./CommentList";
 
 const commentsData = [
   {
-    id: "abc123",
+    id: "a",
     username: "rahulkar",
     comment: "nice video",
     likes: 100,
     dislikes: 18,
     replies: [
       {
-        id: "abc789123",
+        id: "b",
         username: "amritakar",
         comment: "2023 video",
         likes: 90,
         dislikes: 5,
         replies: [
           {
-            id: "abc456123123",
+            id: "c",
             username: "udayankar",
             comment: "hard working video",
             likes: 22,
@@ -26,7 +26,7 @@ const commentsData = [
         ],
       },
       {
-        id: "efg456456",
+        id: "d",
         username: "shivangikapoor",
         comment: "cat exam 2025 video",
         likes: 2,
@@ -36,7 +36,7 @@ const commentsData = [
     ],
   },
   {
-    id: "abc456",
+    id: "e",
     username: "udayankar",
     comment: "hard working video",
     likes: 22,
@@ -44,7 +44,7 @@ const commentsData = [
     replies: [],
   },
   {
-    id: "abc789",
+    id: "f",
     username: "amritakar",
     comment: "2023 video",
     likes: 90,
@@ -52,21 +52,21 @@ const commentsData = [
     replies: [],
   },
   {
-    id: "efg123",
+    id: "g",
     username: "utpalkar",
     comment: "well explained video",
     likes: 34,
     dislikes: 17,
     replies: [
       {
-        id: "efg456123",
+        id: "h",
         username: "udayankar",
         comment: "hard working video",
         likes: 22,
         dislikes: 1,
         replies: [
           {
-            id: "efg456456",
+            id: "x",
             username: "udayankar",
             comment: "hard working video",
             likes: 22,
@@ -78,10 +78,10 @@ const commentsData = [
     ],
   },
   {
-    id: "efg456",
+    id: "y",
     username: "shivangikapoor",
     comment: "cat exam 2025 video",
-    likes: 2,
+    likes: 200,
     dislikes: 15,
     replies: [],
   },
@@ -90,7 +90,7 @@ const commentsData = [
 function CommentBox() {
   return (
     <div className="m-5 p-2">
-      <h1 className="text-2xl font-bold">Comments : </h1>
+      <h1 className="text-2xl font-bold">Comments</h1>
       <CommentList list={commentsData}></CommentList>
     </div>
   );

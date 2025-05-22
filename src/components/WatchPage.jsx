@@ -17,7 +17,7 @@ function WatchPage() {
 
   const dispatch = useDispatch();
 
-  const [videoData, setVideoData] = useState([]);
+  const [videoData, setVideoData] = useState([{ id: "vbnxjskaa" }]);
 
   useEffect(() => {
     dispatch(closeBar());
@@ -32,11 +32,11 @@ function WatchPage() {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vid}&key=${API_KEY}`
     );
     let data = await response.json();
-    setVideoData(data.items);
+    //setVideoData(data.items);
   }
 
-  if(videoData.length===0){
-    return <Shimmer></Shimmer>
+  if (videoData.length === 0) {
+    return <Shimmer></Shimmer>;
   }
 
   return (
