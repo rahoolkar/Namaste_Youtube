@@ -13,7 +13,7 @@ function VideoContainer() {
 
   async function fetchData() {
     const response = await fetch(YOUTUBE_API);
-    const data = await response.json(); 
+    const data = await response.json();
     setData(data.items);
   }
   if (data.length === 0) {
@@ -23,7 +23,7 @@ function VideoContainer() {
   const AdVideoComponent = adVideoCard(VideoCard);
 
   return (
-    <div className="flex flex-wrap p-2 relative z-[-29]">
+    <div className="flex flex-wrap p-2 relative">
       <Link
         className="flex flex-col m-2 w-[32%] h-fit hover:cursor-pointer"
         key={data[0].id}
@@ -34,7 +34,7 @@ function VideoContainer() {
       {data.map((item) => {
         return (
           <Link
-            to="/watch"
+            to={"/watch?v=" + item.id}
             key={item.id}
             className="flex flex-col m-2 w-[32%] h-fit"
           >

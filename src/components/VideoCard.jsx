@@ -3,7 +3,6 @@ function VideoCard({ info }) {
   let { channelTitle, thumbnails, title } = snippet;
   let { viewCount } = statistics;
   return (
-    // <div className="flex flex-col m-2 w-[32%] h-fit">
     <div>
       <img
         src={thumbnails.high.url}
