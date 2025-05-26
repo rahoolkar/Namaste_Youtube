@@ -46,7 +46,7 @@ export default function Header() {
   }
 
   return (
-    <div className="flex justify-between sticky top-0 bg-white">
+    <div className="flex justify-between sticky top-0 bg-white z-[999]">
       <div className="left-section flex items-center w-2/12">
         <div
           className="h-10 w-10 p-2 mx-2 hover: cursor-pointer"
@@ -75,7 +75,7 @@ export default function Header() {
             onBlur={() => {
               setShowSuggestions(false);
             }}
-            className="w-6/12 border border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-400"
+            className="w-6/12 border text-black border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-600"
           ></input>
           <button className="border  border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
             <i className="fa-solid fa-magnifying-glass"></i>

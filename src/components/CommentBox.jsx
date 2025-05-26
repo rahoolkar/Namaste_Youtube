@@ -89,7 +89,7 @@ const commentsData = [
 
 function CommentBox() {
   return (
-    <div className="m-5 p-2">
+    <div className="my-5 w-full">
       <h1 className="text-2xl font-bold">Comments</h1>
       <CommentList list={commentsData}></CommentList>
     </div>

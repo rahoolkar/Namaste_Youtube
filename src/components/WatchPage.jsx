@@ -32,7 +32,6 @@ function WatchPage() {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vid}&key=${API_KEY}`
     );
     let data = await response.json();
-    console.log(data);
     setVideoData(data.items);
   }
 
