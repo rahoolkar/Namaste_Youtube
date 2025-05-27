@@ -75,7 +75,7 @@ export default function Header() {
             onBlur={() => {
               setShowSuggestions(false);
             }}
-            className="w-6/12 border text-black border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-600"
+            className="w-6/12 border border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-600"
           ></input>
           <button className="border  border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
             <i className="fa-solid fa-magnifying-glass"></i>

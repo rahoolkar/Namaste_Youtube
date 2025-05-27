@@ -69,7 +69,7 @@ function LikeDislike({ info }) {
         </div>
         <button
           onClick={handleUserSubscribeInteraction}
-          className=" rounded-4xl bg-black text-sm p-1 text-white flex items-center"
+          className=" rounded-4xl bg-black text-sm p-1 text-white flex items-center hover:cursor-pointer"
         >
           <div>
             <i className="fa-solid fa-bell m-2"></i>
@@ -83,7 +83,7 @@ function LikeDislike({ info }) {
         <div className="flex items-center rounded-4xl bg-gray-100 mx-3">
           <div
             onClick={handleUserLikeInteraction}
-            className="flex items-center px-4 py-1 border-r-2 rounded-l-2xl border-gray-400 hover:bg-gray-300"
+            className="flex items-center px-4 py-1 border-r-2 rounded-l-2xl border-gray-400 hover:bg-gray-300 cursor-pointer"
           >
             <button>
               <span>
@@ -100,7 +100,7 @@ function LikeDislike({ info }) {
           </div>
           <div
             onClick={handleUserDisLikeInteraction}
-            className="flex items-center px-4 py-1 rounded-r-2xl hover:bg-gray-300"
+            className="flex items-center px-4 py-1 rounded-r-2xl hover:bg-gray-300 cursor-pointer"
           >
             <button>
               {userInteraction.isDisLiked ? (
@@ -111,13 +111,13 @@ function LikeDislike({ info }) {
             </button>
           </div>
         </div>
-        <button className="bg-gray-100 px-4 py-1 rounded-4xl mx-2 flex items-center hover:bg-gray-300">
+        <button className="bg-gray-100 px-4 py-1 rounded-4xl mx-2 flex items-center hover:bg-gray-300 cursor-pointer">
           <span>
             <i className="fa-solid fa-share"></i>
           </span>
           <span className="mx-2">Share</span>
         </button>
-        <button className="bg-gray-100 px-3 py-1 rounded-4xl ml-1 hover:bg-gray-300 flex items-center">
+        <button className="bg-gray-100 px-3 py-1 rounded-4xl ml-1 flex items-center hover:bg-gray-300 cursor-pointer">
           <span>
             <i className="fa-solid fa-download"></i>
           </span>
