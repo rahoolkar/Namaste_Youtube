@@ -4,7 +4,7 @@ import VideoContainer from "./VideoContainer";
 function FilterContainer() {
   return (
     <div>
-      <div className="flex overflow-auto sticky top-16 bg-white px-2 z-[999]">
+      <div className="flex overflow-auto sticky top-16 bg-white px-2 z-[99]">
         <Filter name={"All"}></Filter>
         <Filter name={"Trailers"}></Filter>
         <Filter name={"Drama"}></Filter>

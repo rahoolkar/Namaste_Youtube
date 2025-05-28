@@ -24,14 +24,14 @@ function Comment({ data }) {
             <p>{likes}</p>
             <i className="fa-regular fa-thumbs-down p-2 rounded-4xl hover:bg-gray-200"></i>
             <p>{dislikes}</p>
-            <button className="text-xs text-blue-500 p-2 rounded-4xl font-bold hover:bg-gray-200">
+            <button className="text-xs text-blue-500 p-2 rounded-4xl font-bold hover:bg-gray-200 cursor-pointer">
               Reply
             </button>
           </div>
           <div>
             {showReplies === false ? (
               <button
-                className="p-1 rounded-4xl text-blue-500 font-bold text-sm hover:bg-gray-200"
+                className="p-1 rounded-4xl text-blue-500 font-bold text-sm hover:bg-gray-200 cursor-pointer"
                 onClick={handleButtonClick}
               >
                 <span className="mx-1">

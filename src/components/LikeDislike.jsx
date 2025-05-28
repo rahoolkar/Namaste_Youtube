@@ -88,9 +88,9 @@ function LikeDislike({ info }) {
             <button>
               <span>
                 {userInteraction.isLiked ? (
-                  <i className="fa-solid fa-thumbs-up"></i>
+                  <i className="fa-solid fa-thumbs-up hover:cursor-pointer"></i>
                 ) : (
-                  <i className="fa-regular fa-thumbs-up"></i>
+                  <i className="fa-regular fa-thumbs-up hover:cursor-pointer"></i>
                 )}
               </span>
             </button>
@@ -104,9 +104,9 @@ function LikeDislike({ info }) {
           >
             <button>
               {userInteraction.isDisLiked ? (
-                <i className="fa-solid fa-thumbs-down"></i>
+                <i className="fa-solid fa-thumbs-down hover:cursor-pointer"></i>
               ) : (
-                <i className="fa-regular fa-thumbs-down"></i>
+                <i className="fa-regular fa-thumbs-down hover:cursor-pointer"></i>
               )}
             </button>
           </div>

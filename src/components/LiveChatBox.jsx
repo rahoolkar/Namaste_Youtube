@@ -88,12 +88,12 @@ function LiveChatBox({ handleCrossButton }) {
               setLiveChatInput("");
             }}
           >
-            <i className="fa-solid fa-paper-plane"></i>
+            <i className="fa-solid fa-paper-plane hover:cursor-pointer"></i>
           </button>
         </div>
         <div className="hover:bg-gray-200 px-2 py-1 rounded-full hover:cursor-pointer">
           <button>
-            <i className="fa-solid fa-heart"></i>
+            <i className="fa-solid fa-heart hover:cursor-pointer"></i>
           </button>
         </div>
       </div>

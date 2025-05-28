@@ -83,7 +83,7 @@ export default function Header() {
         </div>
 
         {showSuggestions && searchQuery !== "" ? (
-          <div className="bg-white absolute top-14 z-[9999] border border-gray-300 rounded-lg shadow-gray-400 shadow-md w-5/12 mb-2 py-3">
+          <div className="bg-white absolute top-14 z-[999] border border-gray-300 rounded-lg shadow-gray-400 shadow-md w-5/12 mb-2 py-3">
             {searchSuggestion.map((item) => {
               return (
                 <SearchSuggestion
