@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { YOUTUBE_CHANNEL_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function LikeDislike({ info }) {
   let [userInteraction, setUserInteraction] = useState({
@@ -23,6 +24,7 @@ function LikeDislike({ info }) {
     );
     const response = await fetch(NEW_YOUTUBE_CHANNEL_API);
     const data = await response.json();
+    console.log("channel details", data);
     setChannelDetails(data.items);
   }
 
@@ -59,7 +61,9 @@ function LikeDislike({ info }) {
           />
           <div className="mx-4 my-2">
             <h4 className="font-bold text-md">
+              <Link to={"/channel/"+channelDetails[0].id}>
               {channelDetails[0].snippet.title}
+              </Link>
             </h4>
             <h4 className="text-gray-500 text-xs">
               {channelDetails[0].statistics.subscriberCount / 1000000}M

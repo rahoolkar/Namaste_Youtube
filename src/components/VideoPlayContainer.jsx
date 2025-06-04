@@ -3,6 +3,7 @@ import LikeDislike from "./LikeDislike";
 import VideoTitle from "./VideoTitle";
 import LiveChatBox from "./LiveChatBox";
 import { useState } from "react";
+import RecommendedSection from "./RecommendedSection";
 
 function VideoPlayContainer({ data }) {
   const [expandLiveChat, setExpandLiveChat] = useState(true);
@@ -27,26 +28,31 @@ function VideoPlayContainer({ data }) {
         <LikeDislike info={data}></LikeDislike>
         <CommentBox></CommentBox>
       </div>
-      <div className="my-4 mr-4 w-3/12 h-[600px]">
-        {expandLiveChat ? (
-          <LiveChatBox
-            handleCrossButton={() => {
-              setExpandLiveChat(!expandLiveChat);
-            }}
-          ></LiveChatBox>
-        ) : (
-          <div
-            onClick={() => {
-              setExpandLiveChat(!expandLiveChat);
-            }}
-            className="border border-black rounded-4xl w-full px-4 py-2 hover:cursor-pointer"
-          >
-            Show chat
-            <span className="mx-2">
-              <i className="fa-solid fa-angle-down"></i>
-            </span>
-          </div>
-        )}
+      <div className="flex flex-col my-4 mr-4 w-3/12">
+        <div className="my-4 mr-4">
+          {expandLiveChat ? (
+            <LiveChatBox
+              handleCrossButton={() => {
+                setExpandLiveChat(!expandLiveChat);
+              }}
+            ></LiveChatBox>
+          ) : (
+            <div
+              onClick={() => {
+                setExpandLiveChat(!expandLiveChat);
+              }}
+              className="border border-black rounded-4xl w-full px-4 py-2 hover:cursor-pointer"
+            >
+              Show chat
+              <span className="mx-2">
+                <i className="fa-solid fa-angle-down"></i>
+              </span>
+            </div>
+          )}
+        </div>
+        <div className="my-4 mr-4">
+          <RecommendedSection></RecommendedSection>
+        </div>
       </div>
     </div>
   );

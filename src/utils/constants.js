@@ -9,3 +9,5 @@ export const YOUTUBE_SEARCH_API =
 
 
 export let YOUTUBE_CHANNEL_API = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=&key="+API_KEY;
+
+export const YOUTUBE_CHANNEL_DETAILS_API = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=&key="+API_KEY;

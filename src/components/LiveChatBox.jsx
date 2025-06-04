@@ -67,6 +67,7 @@ function LiveChatBox({ handleCrossButton }) {
               id={chat.id}
               author={chat.author}
               text={chat.text}
+              key={chat.id}
             ></LiveChatMessage>
           );
         })}

@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Body from "./components/Body.jsx";
 import WatchPage from "./components/WatchPage.jsx";
+import ChannelSection from "./components/ChannelSection.jsx";
 
 const appRouter = createBrowserRouter(
   [
@@ -19,6 +20,10 @@ const appRouter = createBrowserRouter(
           path: "/watch",
           element: <WatchPage></WatchPage>,
         },
+        {
+          path: "/channel/:cid",
+          element:<ChannelSection></ChannelSection>
+        }
       ],
     },
   ],
