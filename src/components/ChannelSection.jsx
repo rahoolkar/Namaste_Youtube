@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { openBar } from "../utils/barSlice";
 import { useParams } from "react-router-dom";
 import { YOUTUBE_CHANNEL_DETAILS_API } from "../utils/constants";
+import ChannelVideos from "./ChannelVideos";
 
 function ChannelSection() {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -27,18 +28,17 @@ function ChannelSection() {
 
   useEffect(() => {
     fetchChannelDetails();
-  });
+  },[]);
 
   async function fetchChannelDetails() {
     const channel_api = YOUTUBE_CHANNEL_DETAILS_API.replace("id=", `id=${cid}`);
     let response = await fetch(channel_api);
     let data = await response.json();
-    console.log(data);
-    //setChannelDetails(data.items);
+    setChannelDetails(data.items);
   }
 
   if (channelDetails.length === 0) {
-    return <h1>Ahhhhh....</h1>;
+    return <h1>Loading...</h1>;
   }
 
   const { snippet, statistics } = channelDetails[0];
@@ -46,15 +46,8 @@ function ChannelSection() {
   return (
     <div className="flex">
       {isExpand ? <Sidebar></Sidebar> : null}
-      <div className="flex flex-col border-b-2 border-b-gray-300 h-4/12 px-4">
-        <div className="header-image rounded-2xl w-full flex">
-          <img
-            className="rounded-2xl h-56"
-            src={snippet.thumbnails.high.url}
-            alt=""
-          />
-        </div>
-        <div className="mt-2 channel-body flex h-7/12">
+      <div className="flex flex-col  h-4/12 w-full px-4">
+        <div className="mt-2 channel-body flex h-7/12 border-b-2 border-b-gray-300">
           <div className="h-34 w-34 rounded-full p-2">
             <img
               className="rounded-full"
@@ -66,8 +59,13 @@ function ChannelSection() {
             <h2 className="text-4xl font-bold">{snippet.title}</h2>
             <span>
               <span className="font-bold mr-1">{snippet.customUrl}</span>·
-              <span className="mr-1 ml-1 text-gray-500 text-sm">{(statistics.subscriberCount/10000).toFixed(0)}K subscribers</span>·
-              <span className="mr-1 ml-1 text-gray-500 text-sm">{(statistics.videoCount/1000).toFixed(1)}K videos</span>
+              <span className="mr-1 ml-1 text-gray-500 text-sm">
+                {(statistics.subscriberCount / 10000).toFixed(0)}K subscribers
+              </span>
+              ·
+              <span className="mr-1 ml-1 text-gray-500 text-sm">
+                {(statistics.videoCount / 1000).toFixed(1)}K videos
+              </span>
             </span>
             <button
               onClick={handleSubscribe}
@@ -77,7 +75,9 @@ function ChannelSection() {
             </button>
           </div>
         </div>
+        <ChannelVideos channelId={channelDetails[0].id}></ChannelVideos>
       </div>
+      
     </div>
   );
 }
