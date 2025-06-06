@@ -22,8 +22,8 @@ const appRouter = createBrowserRouter(
         },
         {
           path: "/channel/:cid",
-          element:<ChannelSection></ChannelSection>
-        }
+          element: <ChannelSection></ChannelSection>,
+        },
       ],
     },
   ],

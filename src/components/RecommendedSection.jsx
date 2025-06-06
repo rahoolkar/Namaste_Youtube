@@ -18,6 +18,12 @@ function RecommendedSection() {
     setRecommendList(data.items);
   }
 
+  function handleLinkClick() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
+  }
+
   if (recommendList.length == 0) {
     return <Shimmer></Shimmer>;
   }
@@ -26,7 +32,11 @@ function RecommendedSection() {
     <div className="flex flex-col">
       {recommendList.map((item) => {
         return (
-          <Link to={"/watch?v=" + item.id} key={item.id}>
+          <Link
+            to={"/watch?v=" + item.id}
+            key={item.id}
+            onClick={handleLinkClick}
+          >
             <RecommendedVideo data={item}></RecommendedVideo>
           </Link>
         );

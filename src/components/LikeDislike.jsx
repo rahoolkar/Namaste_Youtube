@@ -24,7 +24,6 @@ function LikeDislike({ info }) {
     );
     const response = await fetch(NEW_YOUTUBE_CHANNEL_API);
     const data = await response.json();
-    console.log("channel details", data);
     setChannelDetails(data.items);
   }
 

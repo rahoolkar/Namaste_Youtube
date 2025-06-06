@@ -1,7 +1,7 @@
 function VideoCard({ info }) {
-  let { snippet, statistics } = info;
+  let { snippet } = info;
   let { channelTitle, thumbnails, title } = snippet;
-  let { viewCount } = statistics;
+
   return (
     <div>
       <img
@@ -13,7 +13,12 @@ function VideoCard({ info }) {
         <h1 className="font-bold text-md my-2">{title}</h1>
         <h3 className="text-gray-600 text-sm">{channelTitle}</h3>
         <h3 className="text-sm text-gray-600">
-          {Math.round(viewCount / 10000)}B • {"23 mins ago"}
+          {Math.round(
+            info?.statistics?.viewCount
+              ? info?.statistics?.viewCount
+              : 3450000 / 10000
+          )}
+          B • {"23 mins ago"}
         </h3>
       </div>
     </div>
@@ -23,7 +28,7 @@ function VideoCard({ info }) {
 export const adVideoCard = (VideoCard) => {
   return ({ info }) => {
     return (
-      <div> 
+      <div>
         <VideoCard info={info}></VideoCard>
         <h3 className="text-sm font-bold mx-2">Ad · Sponsored</h3>
       </div>
