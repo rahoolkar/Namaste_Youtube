@@ -15,10 +15,10 @@ function VideoCard({ info }) {
         <h3 className="text-sm text-gray-600">
           {Math.round(
             info?.statistics?.viewCount
-              ? info?.statistics?.viewCount
+              ? info?.statistics?.viewCount /10000
               : 3450000 / 10000
           )}
-          B • {"23 mins ago"}
+          K • {"23 mins ago"}
         </h3>
       </div>
     </div>

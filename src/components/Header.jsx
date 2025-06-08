@@ -39,10 +39,10 @@ export default function Header() {
       "q=",
       `q=${searchQuery}`
     );
-    let response = await fetch(newYoutubeSearchApi + API_KEY);
+    let response = await fetch(newYoutubeSearchApi);
     let data = await response.json();
-    setSearchSuggestions(data.items);
-    dispatch(addToCache({ [searchQuery]: data.items }));
+    setSearchSuggestions(data[1]);
+    dispatch(addToCache({ [searchQuery]: data[1] }));
   }
 
   return (
@@ -84,11 +84,11 @@ export default function Header() {
 
         {showSuggestions && searchQuery !== "" ? (
           <div className="bg-white absolute top-14 z-[999] border border-gray-300 rounded-lg shadow-gray-400 shadow-md w-5/12 mb-2 py-3">
-            {searchSuggestion.map((item) => {
+            {searchSuggestion.map((item,index) => {
               return (
                 <SearchSuggestion
                   info={item}
-                  key={item.id.videoId}
+                  key={index}
                 ></SearchSuggestion>
               );
             })}

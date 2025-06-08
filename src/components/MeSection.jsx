@@ -17,16 +17,18 @@ function MeSection() {
           </div>
         </Link>
 
-        <div className="flex rounded-2xl hover:bg-gray-100">
-          <img
-            className="h-8 m-2"
-            src="https://i.pinimg.com/736x/17/d2/18/17d21878c22fe49e7e4752eecaa36541.jpg"
-            alt=""
-          />
-          <div className="flex items-center">
-            <p className="font-bold text-sm mx-2">Shorts</p>
+        <Link to={"/shorts"}>
+          <div className="flex rounded-2xl hover:bg-gray-100">
+            <img
+              className="h-8 m-2"
+              src="https://i.pinimg.com/736x/17/d2/18/17d21878c22fe49e7e4752eecaa36541.jpg"
+              alt=""
+            />
+            <div className="flex items-center">
+              <p className="font-bold text-sm mx-2">Shorts</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
         <div className="flex rounded-2xl hover:bg-gray-100">
           <img
