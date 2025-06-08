@@ -10,6 +10,7 @@ import Shimmer from "./Shimmer";
 function WatchPage() {
   let [searchParams] = useSearchParams();
   let vid = searchParams.get("v");
+  console.log(vid);
 
   let isExpand = useSelector((store) => {
     return store.bar.expand;

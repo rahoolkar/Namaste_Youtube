@@ -38,8 +38,8 @@ function ChannelVideos({ channelId }) {
       let data = await response.json();
       let filteredListOfVideos = data.items.filter((video) => {
         return (
-          !video.snippet.title.includes("#shorts") &&
-          !video.snippet.title.includes("#Shorts")
+          !video.snippet.title.includes("shorts") &&
+          !video.snippet.title.includes("Shorts")
         );
       });
       setChannelAllVideos(filteredListOfVideos);
@@ -55,7 +55,7 @@ function ChannelVideos({ channelId }) {
       {channelAllVideos.map((video) => {
         return (
           <Link
-            to={"/watch?v=" + video.id}
+            to={"/watch?v=" + video.snippet.resourceId.videoId}
             key={video.id}
             className="flex flex-col m-2 w-[32%] h-fit"
           >
