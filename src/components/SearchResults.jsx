@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { API_KEY } from "../utils/constants";
-
+import VideoCard from "../components/VideoCard";
+import { Link } from "react-router-dom";
 function SearchResults() {
+  const [searchRelatedVideos, setSearchRelatedVideos] = useState([]);
+
   useEffect(() => {
     fetchSearchResults();
   }, []);
@@ -13,11 +16,29 @@ function SearchResults() {
     );
     const data = await response.json();
     const filteredList = data.items.filter((data) => {
-      return !data.snippet.title.toLowerCase().includes("#shorts");
+      return !data.snippet.title.toLowerCase().includes("#");
     });
     console.log(filteredList);
+    setSearchRelatedVideos(filteredList);
   }
-  return <div>Search Results</div>;
+
+  if (searchRelatedVideos.length === 0) {
+    return <h1>Loading....</h1>;
+  }
+  return (
+    <div className="flex flex-wrap">
+      {searchRelatedVideos.map((video) => {
+        return (
+          <Link
+            to={"/watch?v=" + video.id}
+            className="flex flex-col m-2 w-[32%] h-fit"
+          >
+            <VideoCard info={video} />
+          </Link>
+        );
+      })}
+    </div>
+  );
 }
 
 export default SearchResults;

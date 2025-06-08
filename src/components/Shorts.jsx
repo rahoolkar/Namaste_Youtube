@@ -7,7 +7,8 @@ function Shorts({ vid, title }) {
         src={`https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&controls=0&loop=1&playlist=${vid}`}
         frameBorder="0"
         title={title}
-        allow="autoplay; encrypted-media"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
         className="aspect-[9/16] max-h-screen object-cover w-fit"
       />
