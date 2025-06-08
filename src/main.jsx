@@ -7,7 +7,7 @@ import WatchPage from "./components/WatchPage.jsx";
 import ChannelSection from "./components/ChannelSection.jsx";
 import ShortsPage from "./components/ShortsPage.jsx";
 
-const appRouter = createHashRouter(
+const appRouter = createBrowserRouter(
   [
     {
       path: "/",
