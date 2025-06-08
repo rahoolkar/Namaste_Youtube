@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import Body from "./components/Body.jsx";
 import WatchPage from "./components/WatchPage.jsx";
 import ChannelSection from "./components/ChannelSection.jsx";
 import ShortsPage from "./components/ShortsPage.jsx";
 
-const appRouter = createBrowserRouter(
+const appRouter = createHashRouter(
   [
     {
       path: "/",
