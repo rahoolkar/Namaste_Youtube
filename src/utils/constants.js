@@ -15,3 +15,5 @@ export const YOUTUBE_CHANNEL_DETAILS_API = "https://youtube.googleapis.com/youtu
 export const YOUTUBE_GET_CHANNEL_UPLOADS_API = "https://www.googleapis.com/youtube/v3/channels?&part=contentDetails&id=&key="+API_KEY;
 
 export const YOUTUBE_GET_ALL_VIDEOS_BY_CHANNEL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=&maxResults=30&key="+API_KEY;
+
+export const YOUTUBE_SEARCH_RESULTS_API = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=&type=video&maxResults=50&key=";

@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
-import { API_KEY } from "../utils/constants";
+import { API_KEY, YOUTUBE_SEARCH_RESULTS_API } from "../utils/constants";
 import VideoCard from "../components/VideoCard";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+
 function SearchResults() {
   const [searchRelatedVideos, setSearchRelatedVideos] = useState([]);
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q");
 
   useEffect(() => {
     fetchSearchResults();
   }, []);
 
   async function fetchSearchResults() {
-    const response = await fetch(
-      "https://www.googleapis.com/youtube/v3/search?part=snippet&q=india&type=video&maxResults=50&key=" +
-        API_KEY
+    const NEW_YOUTUBE_SEARCH_RESULTS_API = YOUTUBE_SEARCH_RESULTS_API.replace(
+      "q=",
+      `q=${query}`
     );
+    const response = await fetch(NEW_YOUTUBE_SEARCH_RESULTS_API + API_KEY);
     const data = await response.json();
     const filteredList = data.items.filter((data) => {
       return !data.snippet.title.toLowerCase().includes("#");
     });
-    console.log(filteredList);
     setSearchRelatedVideos(filteredList);
   }
 
@@ -30,7 +34,8 @@ function SearchResults() {
       {searchRelatedVideos.map((video) => {
         return (
           <Link
-            to={"/watch?v=" + video.id}
+            to={"/watch?v=" + video.id.videoId}
+            key={video.id.videoId}
             className="flex flex-col m-2 w-[32%] h-fit"
           >
             <VideoCard info={video} />

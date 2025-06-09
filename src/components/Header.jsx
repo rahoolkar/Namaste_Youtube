@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
 import SearchSuggestion from "./SearchSuggestion";
 import { addToCache } from "../utils/cacheSlice";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   let [searchQuery, setSearchQuery] = useState("");
@@ -22,7 +23,6 @@ export default function Header() {
   useEffect(() => {
     let timer = setTimeout(() => {
       if (cache[searchQuery]) {
-        console.log(cache[searchQuery]);
         setSearchSuggestions(cache[searchQuery]);
       } else {
         fetchSearchData();
@@ -43,6 +43,12 @@ export default function Header() {
     let data = await response.json();
     setSearchSuggestions(data[1]);
     dispatch(addToCache({ [searchQuery]: data[1] }));
+  }
+
+  function handlePageRefresh() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }
 
   return (
@@ -77,19 +83,25 @@ export default function Header() {
             }}
             className="w-6/12 border border-gray-400 p-2 rounded-l-full placeholder: px-4 text-md text-gray-600"
           ></input>
-          <button className="border  border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
+          <Link to={"/search?q=" + searchQuery} onClick={handlePageRefresh}>
+            <button className="border  border-gray-400 rounded-r-full py-2 px-4 bg-gray-100">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </Link>
         </div>
 
         {showSuggestions && searchQuery !== "" ? (
           <div className="bg-white absolute top-14 z-[999] border border-gray-300 rounded-lg shadow-gray-400 shadow-md w-5/12 mb-2 py-3">
-            {searchSuggestion.map((item,index) => {
+            {searchSuggestion.map((item, index) => {
               return (
-                <SearchSuggestion
-                  info={item}
+                <Link
                   key={index}
-                ></SearchSuggestion>
+                  to={"/search?q=" + item}
+                  onClick={handlePageRefresh}
+                  className="block"
+                >
+                  <SearchSuggestion info={item}></SearchSuggestion>
+                </Link>
               );
             })}
           </div>
