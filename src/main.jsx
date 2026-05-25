@@ -1,6 +1,22 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
+import Error from "./components/Error.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainBody from "./components/MainBody.jsx";
+import WatchPage from "./components/WatchPage.jsx";
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App></App>,
+    children: [
+      { path: "/", element: <MainBody /> },
+      { path: "/watch", element: <WatchPage></WatchPage> },
+    ],
+    errorElement: <Error></Error>,
+  },
+]);
 
 const root = createRoot(document.getElementById("root"));
-root.render(<App></App>);
+root.render(<RouterProvider router={appRouter}></RouterProvider>);

@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { FaYoutube, FaBell, FaUserCircle } from "react-icons/fa";
 import { HiOutlineMenuAlt2, HiOutlineSearch } from "react-icons/hi";
+import { useDispatch } from "react-redux";
+import { toggleLeftCatergory } from "../store/leftCategorySlice";
 
 function Header() {
   const [searchText, setSearchText] = useState("");
+
+  const dispatch = useDispatch();
 
   function handleSearchInput(event) {
     setSearchText(event.target.value);
@@ -11,6 +15,10 @@ function Header() {
 
   function handleSearch() {
     console.log("Searching:", searchText);
+  }
+
+  function handleLeftCategory() {
+    dispatch(toggleLeftCatergory());
   }
 
   return (
@@ -38,6 +46,7 @@ function Header() {
             transition
             hover:bg-gray-100
           "
+          onClick={handleLeftCategory}
         >
           <HiOutlineMenuAlt2 className="text-2xl text-[#0f0f0f]" />
         </button>

@@ -1,11 +1,16 @@
+import { useSelector } from "react-redux";
 import LeftCategory from "./LeftCatergory";
-import MainBody from "./MainBody";
+import { Outlet } from "react-router-dom";
 
 function Body() {
+  const shouldExpand = useSelector(function (store) {
+    return store.leftCategory.shouldExpand;
+  });
+
   return (
     <div className="flex">
-      <LeftCategory></LeftCategory>
-      <MainBody></MainBody>
+      {shouldExpand ? <LeftCategory></LeftCategory> : null}
+      <Outlet></Outlet>
     </div>
   );
 }
