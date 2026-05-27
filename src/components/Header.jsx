@@ -21,6 +21,14 @@ function Header() {
     dispatch(toggleLeftCatergory());
   }
 
+  function searchQueryHandler(event) {
+    if (searchText.length > 0) {
+      if (event?.key === "Enter") {
+        console.log(searchText);
+      }
+    }
+  }
+
   return (
     <header
       className="
@@ -28,38 +36,71 @@ function Header() {
         top-0
         z-50
         flex
-        h-16
+        h-14
         items-center
         justify-between
+        gap-4
         border-b
         border-gray-200
         bg-white
-        px-4
-        shadow-sm
+        px-3
+        md:h-16
+        md:px-5
       "
     >
-      <div className="flex items-center gap-4">
+      <div
+        className="
+          flex
+          min-w-fit
+          items-center
+          gap-2
+          md:gap-4
+        "
+      >
         <button
+          onClick={handleLeftCategory}
           className="
+            hidden
+            md:flex
             rounded-full
             p-2
             transition
             hover:bg-gray-100
           "
-          onClick={handleLeftCategory}
         >
-          <HiOutlineMenuAlt2 className="text-2xl text-[#0f0f0f]" />
+          <HiOutlineMenuAlt2
+            className="
+              text-2xl
+              text-[#0f0f0f]
+            "
+          />
         </button>
 
-        <div className="flex cursor-pointer items-center gap-1">
-          <FaYoutube className="text-4xl text-red-600" />
+        <div
+          className="
+            flex
+            cursor-pointer
+            items-center
+            gap-1
+          "
+        >
+          <FaYoutube
+            className="
+              text-3xl
+              text-red-600
+              md:text-4xl
+            "
+          />
 
           <span
             className="
-              text-xl
+              hidden
+              text-lg
               font-semibold
               tracking-tight
               text-[#0f0f0f]
+              sm:block
+              md:text-xl
             "
           >
             YouTube
@@ -69,12 +110,13 @@ function Header() {
 
       <div
         className="
-          mx-4
+          group
           hidden
-          max-w-180
+          max-w-175
           flex-1
           items-center
           md:flex
+          md:px-8
         "
       >
         <div
@@ -82,16 +124,37 @@ function Header() {
             flex
             h-10
             flex-1
+            items-center
+            justify-center
             overflow-hidden
             rounded-l-full
             border
             border-gray-300
+            bg-white
+            transition
+            group-focus-within:border-blue-500
           "
         >
+          <div
+            className="
+              hidden
+              pl-4
+              group-focus-within:flex
+            "
+          >
+            <HiOutlineSearch
+              className="
+                text-xl
+                text-gray-500
+              "
+            />
+          </div>
+
           <input
             type="text"
             value={searchText}
             onChange={handleSearchInput}
+            onKeyDown={searchQueryHandler}
             placeholder="Search"
             className="
               w-full
@@ -99,30 +162,63 @@ function Header() {
               text-sm
               outline-none
               placeholder:text-gray-500
+              group-focus-within:md:pl-2
             "
           />
-
-          <button
-            onClick={handleSearch}
-            className="
-              flex
-              w-16
-              items-center
-              justify-center
-              border-l
-              border-gray-300
-              bg-[#f8f8f8]
-              transition
-              hover:bg-gray-100
-              cursor-pointer 
-            "
-          >
-            <HiOutlineSearch className="text-xl text-[#0f0f0f]" />
-          </button>
         </div>
+
+        <button
+          onClick={handleSearch}
+          className="
+            flex
+            h-10
+            w-16
+            items-center
+            justify-center
+            rounded-r-full
+            border
+            border-l-0
+            border-gray-300
+            bg-[#f8f8f8]
+            transition
+            hover:bg-gray-100
+          "
+        >
+          <HiOutlineSearch
+            className="
+              text-xl
+              text-[#0f0f0f]
+            "
+          />
+        </button>
       </div>
 
-      <div className="flex items-center gap-2 md:gap-4">
+      <div
+        className="
+          flex
+          min-w-fit
+          items-center
+          gap-1
+          md:gap-4
+        "
+      >
+        <button
+          className="
+            rounded-full
+            p-2
+            transition
+            hover:bg-gray-100
+            md:hidden
+          "
+        >
+          <HiOutlineSearch
+            className="
+              text-2xl
+              text-[#0f0f0f]
+            "
+          />
+        </button>
+
         <button
           className="
             relative
@@ -130,10 +226,16 @@ function Header() {
             p-2
             transition
             hover:bg-gray-100
-            cursor-pointer
+            hidden
+            md:flex
           "
         >
-          <FaBell className="text-xl text-[#0f0f0f]" />
+          <FaBell
+            className="
+              text-xl
+              text-[#0f0f0f]
+            "
+          />
 
           <span
             className="
@@ -145,7 +247,7 @@ function Header() {
               rounded-full
               bg-red-600
             "
-          ></span>
+          />
         </button>
 
         <button
@@ -153,10 +255,15 @@ function Header() {
             rounded-full
             transition
             hover:opacity-80
-            cursor-pointer
           "
         >
-          <FaUserCircle className="text-4xl text-gray-700" />
+          <FaUserCircle
+            className="
+              text-3xl
+              text-gray-700
+              md:text-4xl
+            "
+          />
         </button>
       </div>
     </header>
