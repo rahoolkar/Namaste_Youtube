@@ -1,10 +1,4 @@
-import { useEffect } from "react";
-
-function VideoContainer({ selectedCategories }) {
-  useEffect(function () {
-    console.log("api call to" + selectedCategories);
-  }, []);
-
+function VideoContainer() {
   return <div>Video Container</div>;
 }
 
