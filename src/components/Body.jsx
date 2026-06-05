@@ -9,8 +9,8 @@ function Body() {
 
   return (
     <div className="flex">
-      {shouldExpand ? <LeftCategory></LeftCategory> : null}
-      <Outlet></Outlet>
+      {shouldExpand ? <LeftCategory key={1}></LeftCategory> : null}
+      <Outlet key={2}></Outlet>
     </div>
   );
 }
