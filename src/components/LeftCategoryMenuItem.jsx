@@ -1,6 +1,5 @@
 function LeftCategoryMenuItem({ icon, text, action, selected }) {
   const showSelected = selected == text ? true : false;
-  console.log(showSelected);
   return (
     <div
       className={

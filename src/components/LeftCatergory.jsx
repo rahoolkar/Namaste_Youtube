@@ -3,6 +3,7 @@ import { categories } from "../utils/Categories";
 import LeftCategoryMenuItem from "./LeftCategoryMenuItem";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelected } from "../store/selectedCategorySlice";
+import { useNavigate } from "react-router-dom";
 
 function LeftCategory() {
   const selected = useSelector(function (store) {
@@ -10,6 +11,8 @@ function LeftCategory() {
   });
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   return (
     <div className="w-2/12 overflow-y-auto h-full py-4 absolute md:relative z-10 -translate-x-50 md:translate-x-0 translate-all">
@@ -24,6 +27,7 @@ function LeftCategory() {
                   dispatch(
                     setSelected(item.type === "home" ? "Home" : item.name),
                   );
+                  navigate("/");
                 }}
                 selected={selected}
               ></LeftCategoryMenuItem>

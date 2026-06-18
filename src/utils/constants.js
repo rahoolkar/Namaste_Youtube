@@ -1,3 +1,6 @@
-const YOUTUBE_ALL_VIDEOS_API = "https://youtube138.p.rapidapi.com/home/";
+const YOUTUBE_ALL_VIDEOS_API =
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&regionCode=US&key=";
 
-export { YOUTUBE_ALL_VIDEOS_API };
+const YOUTUBE_API_KEY = "AIzaSyDfMPTt1LsYCGwa9O4oIA3vT82KS4EHgL0";
+
+export { YOUTUBE_ALL_VIDEOS_API, YOUTUBE_API_KEY };
