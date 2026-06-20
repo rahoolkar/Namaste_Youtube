@@ -5,6 +5,7 @@ import Error from "./components/Error.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainBody from "./components/MainBody.jsx";
 import WatchPage from "./components/WatchPage.jsx";
+import FeedBody from "./components/FeedBody.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const appRouter = createBrowserRouter([
     element: <App></App>,
     children: [
       { path: "/", element: <MainBody /> },
+      { path: "/:wid", element: <FeedBody></FeedBody> },
       { path: "/watch", element: <WatchPage></WatchPage> },
     ],
     errorElement: <Error></Error>,

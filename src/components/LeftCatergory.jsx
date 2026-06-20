@@ -11,7 +11,6 @@ function LeftCategory() {
   });
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   return (
@@ -27,7 +26,7 @@ function LeftCategory() {
                   dispatch(
                     setSelected(item.type === "home" ? "Home" : item.name),
                   );
-                  navigate("/");
+                  navigate(item.type === "home" ? "/" : `/${item.name}`);
                 }}
                 selected={selected}
               ></LeftCategoryMenuItem>

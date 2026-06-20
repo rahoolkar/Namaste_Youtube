@@ -8,7 +8,6 @@ function VideoContainer() {
   async function fetchAllVideoData() {
     const response = await fetch(YOUTUBE_ALL_VIDEOS_API + YOUTUBE_API_KEY);
     const json = await response.json();
-    console.log(json.items);
     setFetchedVideosData(json.items);
   }
 
