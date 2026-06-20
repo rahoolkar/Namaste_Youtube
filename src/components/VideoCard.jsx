@@ -10,6 +10,7 @@ function VideoCard({ data }) {
   const channelId = data.snippet.channelId;
 
   useEffect(() => {
+    
     async function fetchChannelDetails() {
       const response = await fetch(
         YOUTUBE_GET_CHANNEL_DETAILS + channelId + "&key=" + YOUTUBE_API_KEY,
@@ -19,7 +20,7 @@ function VideoCard({ data }) {
     }
 
     fetchChannelDetails();
-  }, []);
+  }, [channelId]);
 
   const { title, thumbnails } = channelDetails;
 

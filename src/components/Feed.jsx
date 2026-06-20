@@ -3,15 +3,15 @@ import typeCategory from "../utils/typeCategory";
 import { useEffect, useState } from "react";
 import { YOUTUBE_API_KEY } from "../utils/constants";
 import VideoCard from "./VideoCard";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 function Feed() {
   const [videoList, setVideoList] = useState([]);
   const { wid } = useParams();
-  const location = useLocation();
   const categoryId = typeCategory[wid];
 
   useEffect(() => {
+    setVideoList([]);
     async function fetchVideoData() {
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&videoCategoryId=${categoryId}&maxResults=50&regionCode=IN&key=${YOUTUBE_API_KEY}`,
@@ -21,7 +21,7 @@ function Feed() {
     }
 
     fetchVideoData();
-  }, [location.pathname]);
+  }, [categoryId]);
 
   if (videoList.length == 0) {
     return <h1>Loading....</h1>;

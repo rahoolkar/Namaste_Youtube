@@ -27,6 +27,7 @@ function LeftCategory() {
                     setSelected(item.type === "home" ? "Home" : item.name),
                   );
                   navigate(item.type === "home" ? "/" : `/${item.name}`);
+                  
                 }}
                 selected={selected}
               ></LeftCategoryMenuItem>
