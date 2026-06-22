@@ -1,13 +1,11 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { collapseLeftCatergory } from "../store/leftCategorySlice";
+import VideoDetails from "./VideoDetails";
 
 function WatchPage() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(collapseLeftCatergory());
-  }, []);
-  return <div>WatchPage</div>;
+  return (
+    <div>
+      <VideoDetails></VideoDetails>
+    </div>
+  );
 }
 
 export default WatchPage;

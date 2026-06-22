@@ -10,7 +10,6 @@ function VideoCard({ data }) {
   const channelId = data.snippet.channelId;
 
   useEffect(() => {
-    
     async function fetchChannelDetails() {
       const response = await fetch(
         YOUTUBE_GET_CHANNEL_DETAILS + channelId + "&key=" + YOUTUBE_API_KEY,
@@ -25,33 +24,50 @@ function VideoCard({ data }) {
   const { title, thumbnails } = channelDetails;
 
   return (
-    <div className="flex flex-col mb-8">
-      <div className="relative h-48 md:h-40 md: rounded-xl overflow-hidden">
+    <div className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl cursor-pointer pb-3 p-2">
+      <div className="relative aspect-video overflow-hidden rounded-xl">
         <img
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           src={data?.snippet?.thumbnails?.high?.url}
-          alt="yt-video-thumbnail"
+          alt="thumbnail"
         />
-        <VideoLength duration={data?.contentDetails?.duration}></VideoLength>
+
+        <VideoLength duration={data?.contentDetails?.duration} />
       </div>
-      <div className="flex mt-3">
-        <div className="flex items-start"></div>
-        <div className="flex h-9 w-9 rounded-full overflow-hidden">
+
+      <div className="flex mt-3 px-1">
+        <div className="h-9 w-9 rounded-full overflow-hidden shrink-0">
           <img
             className="h-full w-full object-cover"
             src={thumbnails?.default?.url}
-            alt=""
+            alt={title}
           />
         </div>
-        <div className="flex flex-col ml-3 overflow-hidden">
-          <span className="text-sm font-semibold line-clamp-2">
+
+        <div className="ml-3 min-w-0">
+          <h3 className="text-sm font-semibold line-clamp-2">
             {data?.snippet?.title}
-          </span>
-          <span className="text-sm text-gray-600 items-center">{title}</span>
+          </h3>
+
+          <p className="text-sm text-gray-600 truncate">{title}</p>
         </div>
       </div>
     </div>
   );
 }
+
+const adVideoCard = (VideoCard) => {
+  return ({ data }) => {
+    return (
+      <div className="border border-gray-400 rounded-3xl">
+        <VideoCard data={data}></VideoCard>
+        <p className="text-xs font-semibold text-center">Ad · Sponsored</p>
+      </div>
+    );
+  };
+};
+
+// eslint-disable-next-line react-refresh/only-export-components
+export { adVideoCard };
 
 export default VideoCard;
