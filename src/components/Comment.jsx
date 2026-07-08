@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 
-function Comment({ replies, snippet }) {
+function Comment({ replies, snippet, repliesDetails }) {
+  const [showReply, setShowReply] = useState(false);
+  const [expandReplies, setExpandReplies] = useState(false);
+
   const commentDetails = snippet?.topLevelComment?.snippet;
   const { authorDisplayName, authorProfileImageUrl, textDisplay } =
-    commentDetails;
-  const [showReply, setShowReply] = useState(false);
+    repliesDetails || commentDetails;
+
   return (
     <div className="flex py-2">
       <div className="h-11 w-11 rounded-full overflow-hidden mx-4">
@@ -61,14 +64,29 @@ function Comment({ replies, snippet }) {
             </button>
           </div>
         )}
+        {replies && (
+          <div
+            className="p-2 rounded-full hover:cursor-pointer text-gray-600 text-sm font-semibold"
+            onClick={() => {
+              setExpandReplies(!expandReplies);
+            }}
+          >
+            {expandReplies ? "hide replies" : "show replies"}
+          </div>
+        )}
+        {replies && expandReplies && (
+          <div className="flex flex-col border-l border-gray-300">
+            {replies?.comments.map((comment) => {
+              return (
+                <Comment
+                  repliesDetails={comment.snippet}
+                  key={comment.id}
+                ></Comment>
+              );
+            })}
+          </div>
+        )}
       </div>
-      {replies && (
-        <div className="flex flex-col ml-5">
-          {replies?.comments.map((comment) => {
-            return <Comment {...comment} key={comment.id}></Comment>;
-          })}
-        </div>
-      )}
     </div>
   );
 }

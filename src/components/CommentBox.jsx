@@ -2,8 +2,13 @@ import Comment from "./Comment";
 
 function CommentBox() {
   return (
-    <div className="flex flex-col">
-      <Comment></Comment>
+    <div>
+      <h1 className="font-bold text-lg">Comments</h1>
+      <div>
+        {comments.map((comment) => {
+          return <Comment {...comment} key={comment.id}></Comment>;
+        })}
+      </div>
     </div>
   );
 }
