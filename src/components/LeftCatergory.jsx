@@ -14,7 +14,7 @@ function LeftCategory() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-2/12 overflow-y-auto h-full py-4 absolute md:relative z-10 -translate-x-50 md:translate-x-0 translate-all">
+    <div className="h-full w-3/12 md:w-2/12 overflow-y-auto py-4 fixed top-14 md:relative md:top-0 translate-x-0 translate-all bg-white">
       <div className="flex flex-col px-4">
         {categories.map((item, index) => {
           return (
@@ -27,7 +27,6 @@ function LeftCategory() {
                     setSelected(item.type === "home" ? "Home" : item.name),
                   );
                   navigate(item.type === "home" ? "/" : `/${item.name}`);
-                  
                 }}
                 selected={selected}
               ></LeftCategoryMenuItem>
@@ -37,7 +36,7 @@ function LeftCategory() {
           );
         })}
         <hr className="my-3 border-gray-400"></hr>
-        <div className="text-black/30 md:text-xs">
+        <div className="text-black/30 md:text-xs hidden md:inline">
           <p>Clone by Rahul Kar</p>
         </div>
       </div>
