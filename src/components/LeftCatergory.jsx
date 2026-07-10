@@ -14,7 +14,7 @@ function LeftCategory() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-full w-3/12 md:w-2/12 overflow-y-auto py-4 fixed top-14 md:relative md:top-0 translate-x-0 translate-all bg-white">
+    <div className="h-full w-3/12 lg:w-2/12 overflow-y-auto py-4 fixed top-14 md:relative md:top-0 translate-x-0 translate-all bg-white z-10">
       <div className="flex flex-col px-4">
         {categories.map((item, index) => {
           return (

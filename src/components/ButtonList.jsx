@@ -44,7 +44,7 @@ function ButtonList() {
   }
 
   return (
-    <div className="relative">
+    <div className="hidden md:relative">
       <button
         onClick={() => {
           handleScroll("left");
